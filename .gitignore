@@ -1,1 +1,26 @@
 raw_data/
+
+
+# OS generated files #
+######################
+.DS_Store
+__MACOSX
+# Jupiter Notebook #
+.pytest_cache
+__pycache__
+
+
+# inteliJ #
+.idea
+*.gz
+*PKG-INFO
+
+mlruns
+*.sqlite
+# IDE #
+*.vscode
+
+
+
+.env
+.envrc
