@@ -24,3 +24,6 @@ mlruns
 
 .env
 .envrc
+
+
+*.csv
