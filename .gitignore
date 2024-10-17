@@ -27,3 +27,4 @@ mlruns
 
 
 *.csv
+*.egg-info
