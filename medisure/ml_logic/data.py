@@ -30,3 +30,34 @@ def clean_text(text):
 
     # return ' '.join(lemmatized_words)
     return text
+
+
+
+
+
+
+def eda_pipeline(df):
+
+    print('_' * 33)
+    print(f'\n\nColumns:\n{df.columns}\n\n')
+
+    print('_' * 33)
+    display(f'Total Rows: {df.shape[0]:,}')
+
+    print('_' * 33)
+    print('\n\nUnique data types:')
+    print(df.dtypes.unique())
+
+
+    print('_' * 33)
+    print('\n\nDescribe the DataFrame (including categorical data):')
+    print(df.describe(include='O'))
+
+    print('_' * 33)
+    print(f'\n\nNumber of duplicate rows: {df.duplicated().sum():,}')
+
+    print('_' * 33)
+    print('\n\nMissing values per column:')
+    display(pd.DataFrame(df.isna().sum(), columns=['Missing Values']))
+
+    return df
