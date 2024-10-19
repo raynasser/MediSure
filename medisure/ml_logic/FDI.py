@@ -27,8 +27,11 @@ def lower(text):
 def summarize(text):
     pipe = pipeline('summarization', model= 'sshleifer/distilbart-xsum-12-6')
 
-    summary = pipe(text)
-    return summary[0]['summary_text']
+    try:
+        summary = pipe(text)
+        return summary[0]['summary_text']
+    except:
+        return ""
     # return pipe(text)
 
 
@@ -84,7 +87,7 @@ return the result through a json object, The response must be in the following J
 
 
 
-def get_tau_score(data):
+def get_summarization():
 
     foodrug = '/Users/raynasser/code/raynasser/MediSure/data/raw_data/FooDru'
 
@@ -105,14 +108,39 @@ def get_tau_score(data):
 
     fdi_pre["clean_text"] = fdi_pre.apply(lambda x: x["document"][int(x["start_index"]):int(x["end_index"])], axis=1)
 
-    fdi_combo = fdi_pre.groupby(by="texts_ID").agg({"food":lambda x: x.mode()[0],"drug":lambda x: x.mode()[0],"clean_text":lambda x: '. '.join(x)}).reset_index()
+    # fdi_combo = fdi_pre.groupby(by="texts_ID").agg({"food":lambda x: x.mode()[0],"drug":lambda x: x.mode()[0],"clean_text":lambda x: '. '.join(x)}).reset_index()
+    fdi_map = fdi_pre.groupby(by="texts_ID").agg({"food":lambda x: x.mode()[0],"drug":lambda x: x.mode()[0],"clean_text":lambda x: '. '.join(x)}).reset_index()
 
-    fdi_map = fdi_combo.head(5)
+    # fdi_map = fdi_map.tail(10)
+    # print(fdi_map)
+    # return fdi_map
+    print("Start Summarization...")
     fdi_map["summarize"] = fdi_map.clean_text.map(summarize)
 
+
+    # save as csv file
+    output_path = os.path.join(foodrug, 'fdi_summarization_results.csv')
+    fdi_map.to_csv(output_path, index=False)
+    print("Done")
+
+    return fdi_map
+
+
+
+def get_tau_score(fdi_map):
+
+    foodrug = '/Users/raynasser/code/raynasser/MediSure/data/raw_data/FooDru'
+
+
+    print("Start TAU scoring...")
     fdi_map["tau"] = fdi_map.summarize.map(tau_score)
 
     fdi_map[['food_', 'drug_', 'relationship', 'tau_score']] = fdi_map['tau'].apply(pd.Series)
     fdi_map.drop(columns='tau', inplace= True)
 
-    return data
+    # save as csv file
+    output_path = os.path.join(foodrug, 'fdi_tau_results.csv')
+    fdi_map.to_csv(output_path, index=False)
+    print("Done")
+
+    return fdi_map
