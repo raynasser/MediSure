@@ -9,6 +9,7 @@ import json
 import openai
 
 
+import argparse
 
 
 
@@ -61,7 +62,7 @@ def uniq_drugs_key():
 
     df = uniq_drugs.drop_duplicates()
 
-    df = df.head(5)
+    # df = df.head(7)
 
     df[['SMILES', 'InChI', 'InChIKey']] = df['drug'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
 
@@ -101,13 +102,32 @@ def ddi_drugs_key():
 
 
 
-    all_ddi50 = all_ddi.head(7)
+    # all_ddi = all_ddi.head(7)
     print("Start fetching chemical identifiers...")
-    all_ddi50[['SMILES', 'InChI', 'InChIKey']] = all_ddi50['drug'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
-
+    all_ddi[['Drug_A_SMILES', 'Drug_A_InChI', 'Drug_A_InChIKey']] = all_ddi['Drug_A'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
+    all_ddi[['Drug_B_SMILES', 'Drug_B_InChI', 'Drug_B_InChIKey']] = all_ddi['Drug_B'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
     # Save the updated dataframe with new columns
     output_path = os.path.join(ddi, 'drugsKey_results.csv')
-    all_ddi50.to_csv(output_path, index=False)
+    all_ddi.to_csv(output_path, index=False)
     print(f"Done")
 
-    return all_ddi50
+    return all_ddi
+
+
+
+
+
+def main(file_path):
+    drugs_key = uniq_drugs_key()
+    # drugs_key_ddi = ddi_drugs_key()
+    print(drugs_key)
+    # print(drugs_key_ddi)
+
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Process drug data and fetch chemical information.")
+    parser.add_argument('--file', type=str, help='Path to the unique drugs CSV file', required=False)
+    args = parser.parse_args()
+
+    main(args.file)
