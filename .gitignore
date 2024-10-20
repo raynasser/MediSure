@@ -27,5 +27,7 @@ mlruns
 .envrc
 
 
-*.csv
+allergies.csv
+medications.csv
+patients.csv
 *.egg-info
