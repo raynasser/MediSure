@@ -20,7 +20,7 @@ mlruns
 # IDE #
 *.vscode
 
-
+notebooks/profiles.csv
 
 .env
 .envrc
