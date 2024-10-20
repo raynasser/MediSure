@@ -1,5 +1,5 @@
 raw_data/
-
+generative_model/raw_data
 
 # OS generated files #
 ######################
@@ -32,4 +32,4 @@ allergies.csv
 medications.csv
 patients.csv
 *.egg-info
-generative_models/Synthea/
+/Users/aziz/code/raynasser/MediSure/MediSure/generative_models/Synthea
