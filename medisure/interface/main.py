@@ -73,7 +73,7 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
 
 
 def get_summarization():
-    bucket_name = 'your-bucket-name'
+    bucket_name = 'foodrug'
     local_foodrug_tm = 'TM_interactions.csv'
     local_foodrug_texts = 'texts.csv'
 
@@ -111,7 +111,7 @@ def get_summarization():
 
 
 def get_tau_score(fdi_map):
-    bucket_name = 'your-bucket-name'
+    bucket_name = 'foodrug'
     output_path = 'fdi_tau_results.csv'
 
     print("Start TAU scoring...")
