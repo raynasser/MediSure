@@ -10,6 +10,7 @@ __MACOSX
 __pycache__
 
 
+
 # inteliJ #
 .idea
 *.gz
