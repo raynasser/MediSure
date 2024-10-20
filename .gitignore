@@ -24,3 +24,7 @@ mlruns
 
 .env
 .envrc
+
+
+*.csv
+*.egg-info
