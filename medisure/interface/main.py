@@ -90,8 +90,7 @@ def get_summarization():
     fdi_pre = foodrug_texts.merge(foodrug_TM_interactions, on="texts_ID")
     fdi_pre["food"] = fdi_pre.food.map(lower)
     fdi_pre["drug"] = fdi_pre.drug.map(lower)
-    fdi_pre["clean_text"] = fdi_pre.apply(lambda x: x["document"][int(x["start_index"]):int(x["end_index")]], axis=1)
-
+    fdi_pre["clean_text"] = fdi_pre.apply(lambda x: x["document"][int(x["start_index"]):int(x["end_index"])], axis=1)
     fdi_map = fdi_pre.groupby(by="texts_ID").agg({
         "food": lambda x: x.mode()[0],
         "drug": lambda x: x.mode()[0],
@@ -130,7 +129,7 @@ def get_tau_score(fdi_map):
 
 if __name__ == '__main__':
     fdi_map = get_summarization()
-    get_tau_score(fdi_map)
+    #get_tau_score(fdi_map)
 
 
 
