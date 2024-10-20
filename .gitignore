@@ -26,9 +26,10 @@ mlruns
 .env
 .envrc
 
+*.csv
 
 allergies.csv
 medications.csv
 patients.csv
 *.egg-info
-generative_models
+/Users/aziz/code/raynasser/MediSure/MediSure/generative_models
