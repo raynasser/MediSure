@@ -32,4 +32,4 @@ allergies.csv
 medications.csv
 patients.csv
 *.egg-info
-/Users/aziz/code/raynasser/MediSure/MediSure/generative_models
+/Users/aziz/code/raynasser/MediSure/MediSure/generative_models/Synthea
