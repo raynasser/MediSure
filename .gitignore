@@ -1,5 +1,5 @@
 raw_data/
-generative_model/raw_data
+
 
 # OS generated files #
 ######################
@@ -8,7 +8,6 @@ __MACOSX
 # Jupiter Notebook #
 .pytest_cache
 __pycache__
-
 
 
 # inteliJ #
@@ -26,10 +25,6 @@ mlruns
 .env
 .envrc
 
-*.csv
 
-allergies.csv
-medications.csv
-patients.csv
+*.csv
 *.egg-info
-/Users/aziz/code/raynasser/MediSure/MediSure/generative_models/Synthea
