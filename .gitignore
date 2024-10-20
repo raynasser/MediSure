@@ -31,3 +31,4 @@ allergies.csv
 medications.csv
 patients.csv
 *.egg-info
+generative_models
