@@ -48,7 +48,7 @@ def clean_name():
     raw = '/Users/raynasser/code/raynasser/MediSure/data/raw_data/'
 
 
-    medi = pd.read_csv(os.path.join(raw, 'medicine_dataset.csv'))#, index_col='id')
+    medi = pd.read_csv(os.path.join(raw, 'medi_name.csv'))#, index_col='id')
 
 
     medi.applymap(lower)

@@ -54,8 +54,8 @@ def uniq_drugs_key():
     foodrug = '/Users/raynasser/code/raynasser/MediSure/data/raw_data/FooDru'
 
 
-    uniq_drugs = pd.read_csv(os.path.join(foodrug, 'unique_drugs.csv'))
-    uniq_drugs.drop(columns=['Unnamed: 0', 'ID'], inplace=True)
+    uniq_drugs = pd.read_csv(os.path.join(foodrug, 'fdi_drugs.csv'))
+    # uniq_drugs.drop(columns=['Unnamed: 0', 'ID'], inplace=True)
 
     uniq_drugs = uniq_drugs.applymap(lower)
 
@@ -67,7 +67,7 @@ def uniq_drugs_key():
     df[['SMILES', 'InChI', 'InChIKey']] = df['drug'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
 
 
-    output_path = '/Users/raynasser/code/raynasser/MediSure/data/raw_data/updated_drugs_with_identifiers.csv'
+    output_path = '/Users/raynasser/code/raynasser/MediSure/data/raw_data/fdi_drugs_key.csv'
     df.to_csv(output_path, index=False)
 
     return df
