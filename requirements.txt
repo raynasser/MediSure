@@ -21,7 +21,7 @@ h5py==3.10.0
 db-dtypes
 pyarrow
 
-tourch
+torch
 
 openai
 
