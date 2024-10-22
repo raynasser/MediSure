@@ -30,20 +30,35 @@ def lower(text):
 
 def fetch_chemical_info(drug_name):
     base_url = f"https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/{drug_name}/property/IsomericSMILES,InChI,InChIKey/JSON"
-    response = requests.get(base_url)
 
-    if response.status_code == 200:
-        try:
-            data = response.json()
-            properties = data['PropertyTable']['Properties'][0]
-            smiles = properties.get('IsomericSMILES', 'Not Found')
-            inchi = properties.get('InChI', 'Not Found')
-            inchikey = properties.get('InChIKey', 'Not Found')
-            return smiles, inchi, inchikey
-        except (KeyError, IndexError):
+    try:
+        # Set a timeout of 10 seconds for the request
+        response = requests.get(base_url, timeout=10)
+
+        # Check if the request was successful
+        if response.status_code == 200:
+            try:
+                data = response.json()
+                properties = data['PropertyTable']['Properties'][0]
+                smiles = properties.get('IsomericSMILES', 'Not Found')
+                inchi = properties.get('InChI', 'Not Found')
+                inchikey = properties.get('InChIKey', 'Not Found')
+                return smiles, inchi, inchikey
+            except (KeyError, IndexError):
+                return 'Not Found', 'Not Found', 'Not Found'
+        else:
+            # Handle non-200 status codes
+            print(f"Error: Unable to fetch data for {drug_name}. Status code: {response.status_code}")
             return 'Not Found', 'Not Found', 'Not Found'
-    else:
+
+    except requests.exceptions.Timeout:
+        print(f"Error: Request timed out for {drug_name}")
         return 'Not Found', 'Not Found', 'Not Found'
+
+    except requests.exceptions.RequestException as e:
+        print(f"Error: An error occurred while fetching data for {drug_name}: {e}")
+        return 'Not Found', 'Not Found', 'Not Found'
+
 
 
 

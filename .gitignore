@@ -28,3 +28,7 @@ notebooks/profiles.csv
 
 *.csv
 *.egg-info
+
+
+key.ipynb
+key copy.ipynb

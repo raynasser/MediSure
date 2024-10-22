@@ -131,22 +131,22 @@ def ddi_data():
 
 
 
-    # all_ddi50 = all_ddi.head(7)
-    print("Start getting ddi...")
-    all_ddi['Interaction_Details'] = all_ddi.apply(
-    lambda row: ddi_tau_score(row['Drug_A'],
-                              row['Drug_B'],
-                              row['Level']),
-    axis=1)
+    # # all_ddi50 = all_ddi.head(7)
+    # print("Start getting ddi...")
+    # all_ddi['Interaction_Details'] = all_ddi.apply(
+    # lambda row: ddi_tau_score(row['Drug_A'],
+    #                           row['Drug_B'],
+    #                           row['Level']),
+    # axis=1)
 
 
 
-    all_ddi[['drug_a_', 'drug_b_', 'mechanism', 'tau']] = all_ddi['Interaction_Details'].apply(pd.Series)
-    all_ddi.drop(columns= 'Interaction_Details', inplace= True)
+    # all_ddi[['drug_a_', 'drug_b_', 'mechanism', 'tau']] = all_ddi['Interaction_Details'].apply(pd.Series)
+    # all_ddi.drop(columns= 'Interaction_Details', inplace= True)
 
-    output_path = os.path.join(ddi, 'ddi_results.csv')
-    all_ddi.to_csv(output_path, index=False)
-    print("Done")
+    # output_path = os.path.join(ddi, 'ddi_results.csv')
+    # all_ddi.to_csv(output_path, index=False)
+    # print("Done")
 
 
     return all_ddi
