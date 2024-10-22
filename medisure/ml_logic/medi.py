@@ -11,6 +11,9 @@ import openai
 
 import re
 
+import argparse
+
+
 
 
 
@@ -48,6 +51,33 @@ def extract_medication_info(med_str):
 
     # If no match found, return None for each column
     return pd.Series([None, None, None])
+
+
+
+
+
+
+base_url = "https://cactus.nci.nih.gov/chemical/structure/{}/inchikey"
+
+
+def fetch_chemical_info(drug_name):
+    try:
+
+        drug_encoded = drug_name.replace(' ', '%20')
+
+
+        response = requests.get(base_url.format(drug_encoded))
+
+        if response.status_code == 200:
+            inchi_key = response.text.strip().replace('InChIKey=', '')
+            return pd.Series([None, None, inchi_key])
+        else:
+            return pd.Series([None, None, None])
+
+    except Exception as e:
+        print(f"{drug_name}: Error - {e}")
+        return pd.Series([None, None, None])
+
 
 
 
@@ -124,9 +154,9 @@ def ddi_drugs_key():
 
 
 def main(file_path):
-    drugs_key = uniq_drugs_key()
-    # drugs_key_ddi = ddi_drugs_key()
-    print(drugs_key)
+    # drugs_key = uniq_drugs_key()
+    drugs_key_ddi = ddi_drugs_key()
+    # print(drugs_key)
     # print(drugs_key_ddi)
 
 
