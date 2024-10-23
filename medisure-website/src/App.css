@@ -1,0 +1,124 @@
+body {
+  background-color: #091b25;  /* Matches logo color */
+  color: white;  /* Adjust text color for visibility */
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+  background-color: #091b25;  /* Matches logo color */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+}
+
+.logo {
+  position: absolute;  /* Position it relative to its parent container */
+  top: 5px;  /* Distance from the top of the screen */
+  left: 5px;  /* Distance from the left side */
+  width: 300px;  /* Adjust size as needed */
+  height: auto;
+}
+
+header {
+  margin-bottom: 30px;
+}
+
+.chat-window {
+  width: 400px;
+  max-height: 500px;
+  background-color: #0b1b25;
+  border: 1px solid #042e48;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for a floating effect */
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease; /* Smooth transition for any interactions */
+}
+
+h1, p {
+  color: #07bee0;  /* Text color to contrast against dark background */
+}
+
+/* Message bubbles */
+.message {
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 12px;
+  max-width: 70%;
+  word-wrap: break-word;
+  font-size: 14px;
+  line-height: 1.5; /* Improved readability */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.message.user {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;  /* User messages aligned to the right */
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2); /* Shadow to make the message pop */
+}
+
+.message.bot {
+  background-color: #0b1b25;
+  color: white;
+  align-self: flex-start;  /* Bot messages aligned to the left */
+  text-align: left;  /* Ensure text is aligned to the left */
+  white-space: pre-wrap;  /* Preserve line breaks */
+  box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message:hover {
+  transform: translateY(-2px); /* Lift the message slightly on hover */
+}
+
+strong {
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center; /* Centering the input and button horizontally */
+  align-items: center; /* Vertically center the inputs */
+  width: 100%; /* Ensure the input group spans the full width */
+}
+
+.chat-input {
+  width: 35%; /* Reduced width for a smaller input field */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #07bee0;
+  outline: none;
+  margin-left: 150px;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input:focus {
+  border-color: #07bee0; /* Border color changes on focus */
+}
+
+.chat-send-btn {
+  width: 10%; /* Smaller send button */
+  background-color: #007bff;
+  color: #07bee0;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 100px;
+}
+
+.chat-send-btn:hover {
+  background-color: #07bee0;
+  color: #007bff;  /* Button hover color reversed */
+}
