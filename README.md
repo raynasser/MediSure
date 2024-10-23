@@ -1,9 +1,7 @@
 
 
 
-![alt text](image.png)
-<img src="image.png" alt="alt text" width="400" height="300">
-
+![alt text](image-1.png)
 
 
 
