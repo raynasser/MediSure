@@ -1,8 +1,9 @@
 
 
 
-![Getting Started](img.jpg)
 ![alt text](image.png)
+<img src="image.png" alt="alt text" width="400" height="300">
+
 
 
 
