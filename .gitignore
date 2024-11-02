@@ -33,7 +33,11 @@ notebooks/profiles.csv
 key.ipynb
 key copy.ipynb
 
+ra | eda copy.ipynb
+
 
 .ipynb_checkpoints
 
 .python-version
+
+Makefile
