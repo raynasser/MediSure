@@ -2,12 +2,7 @@ import pandas as pd
 
 import os
 
-from transformers import pipeline
-
 import requests
-import json
-import openai
-
 
 import argparse
 
@@ -145,7 +140,8 @@ def ddi_drugs_key():
     print("Start fetching chemical identifiers...")
     all_ddi[['Drug_A_SMILES', 'Drug_A_InChI', 'Drug_A_InChIKey']] = all_ddi['Drug_A'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
     all_ddi[['Drug_B_SMILES', 'Drug_B_InChI', 'Drug_B_InChIKey']] = all_ddi['Drug_B'].apply(lambda x: pd.Series(fetch_chemical_info(x)))
-    # Save the updated dataframe with new columns
+
+
     output_path = os.path.join(ddi, 'drugsKey_results.csv')
     all_ddi.to_csv(output_path, index=False)
     print(f"Done")
