@@ -34,6 +34,13 @@ def clean_text(text):
 
 
 
+def lower(text):
+    try:
+        return text.lower()
+    except:
+        return text
+
+
 
 
 def eda_pipeline(df):
@@ -42,7 +49,7 @@ def eda_pipeline(df):
     print(f'\n\nColumns:\n{df.columns}\n\n')
 
     print('_' * 33)
-    display(f'Total Rows: {df.shape[0]:,}')
+    display(f'Total Rows: {df.shape[0]:,}') # type: ignore
 
     print('_' * 33)
     print('\n\nUnique data types:')
@@ -58,6 +65,6 @@ def eda_pipeline(df):
 
     print('_' * 33)
     print('\n\nMissing values per column:')
-    display(pd.DataFrame(df.isna().sum(), columns=['Missing Values']))
+    display(pd.DataFrame(df.isna().sum(), columns=['Missing Values'])) # type: ignore
 
     return df

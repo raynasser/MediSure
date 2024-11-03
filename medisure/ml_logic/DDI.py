@@ -2,9 +2,6 @@ import pandas as pd
 
 import os
 
-from transformers import pipeline
-
-import requests
 import json
 import openai
 
@@ -27,13 +24,13 @@ def lower(text):
 
 
 def ddi_tau_score(drug_a, drug_b, level):
-    # Define the API key and endpoint
+
     API_KEY = os.environ.get("API_KEY")
 
-    # Set up headers for the API request
+
     client = openai.OpenAI(api_key=API_KEY)
 
-    # Prepare the API call to analyze drug-drug interaction based on level
+
     prompt = f"""
     You are tasked with determining the interaction mechanism between two drugs.
     The drugs are:
@@ -53,7 +50,6 @@ def ddi_tau_score(drug_a, drug_b, level):
     """
 
     try:
-        # API call to OpenAI
         completion = client.chat.completions.create(
             model="gpt-4o",
             messages=[
@@ -61,11 +57,11 @@ def ddi_tau_score(drug_a, drug_b, level):
             ]
         )
 
-        # Log the raw response for debugging
+
         response_content = completion.choices[0].message.content
         print(f"Response for {drug_a} and {drug_b}: {response_content}")
 
-        # Clean up the response to remove any extra formatting markers like ```json or ```
+
         response_content = response_content.strip('```json').strip('```').strip()
 
         # Check if response is empty or invalid

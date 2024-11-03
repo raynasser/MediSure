@@ -4,7 +4,6 @@ import os
 
 from transformers import pipeline
 
-import requests
 import json
 import openai
 

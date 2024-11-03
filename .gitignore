@@ -34,10 +34,12 @@ key.ipynb
 key copy.ipynb
 
 ra | eda copy.ipynb
+ra | fin X.ipynb
+ra | init eda.ipynb
 
 
 .ipynb_checkpoints
 
-.python-version
+.python-versionn
 
 Makefile

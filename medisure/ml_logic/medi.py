@@ -2,12 +2,7 @@ import pandas as pd
 
 import os
 
-from transformers import pipeline
-
 import requests
-import json
-import openai
-
 
 import re
 
@@ -29,10 +24,7 @@ def lower(text):
 
 
 def extract_medication_info(med_str):
-    # Regular expression to capture the name, dosage (with slashes), and form
-    # pattern = r'^([a-zA-Z\s]+)\s([\dmg/]+)\s*(.*)$'
-    # pattern = r'^([a-zA-Z\s\-]+)\s*(\d*mg)?\s*(.*)$'
-    # pattern = r'^([\w\s\-\u00C0-\u02AF]+)\s*(\d*mg|\d+)?\s*(.*)$'
+
 
     patterns = [
         r'^([a-zA-Z\s]+)\s([\dmg/]+)\s*(.*)$',
@@ -43,13 +35,12 @@ def extract_medication_info(med_str):
     for pattern in patterns:
         match = re.match(pattern, med_str)
         if match:
-            # Safely extract the groups and strip spaces
             name = match.group(1).strip() if match.group(1) else ""
             dosage = match.group(2).strip() if match.group(2) else ""
             form = match.group(3).strip() if match.group(3) else ""
             return pd.Series([name, dosage, form])
 
-    # If no match found, return None for each column
+
     return pd.Series([None, None, None])
 
 
