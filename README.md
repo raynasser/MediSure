@@ -1,13 +1,17 @@
 
 
 
-![alt text](image-1.png)
+![alt text](image.png)
 
 
 
 # MediSure
 
 MediSure is a user-friendly chatbot designed to help individuals taking medication optimize its effectiveness by providing personalized recommendations on what foods to eat and what to avoid. It also helps users understand which medications are safe to take together and which combinations pose potential risks. By offering clear, accessible advice, MediSure empowers people to make informed decisions that support their health and well-being while minimizing any adverse interactions between their medications, diet, or other medicines.
+
+
+---
+
 
 ## Features
 
@@ -23,14 +27,39 @@ MediSure is a user-friendly chatbot designed to help individuals taking medicati
 - **Responsive design**: The website works seamlessly on desktops, tablets, and mobile devices.
 - **Easy input system**: Search functionality for medications and foods, making it simple for users to find what they need.
 
+
+---
+
+
 ## APIs Used
 
 - **OpenAI API**: Used for natural language processing to power the chatbot and provide responses in a conversational style. [OpenAI API Documentation](https://beta.openai.com/docs/)
 - **CACTUS API**: Used to generate InChI keys for chemical structures. [CACTUS API Documentation](https://cactus.nci.nih.gov/chemical/structure)
 
+
+---
+
+
+## Databases
+
+1. **FooDrugs MYSQL Dump V4**: Contains data on food-drug interactions, particularly useful for managing dietary recommendations based on specific medications.
+   - URL: [FooDrugs MYSQL Dump V4](https://imdeafoodcompubio.com/index.php/download/)
+   - **Tables Used**: `texts` and `TM_interactions`
+
+2. **DDInter Database**: A comprehensive source for drug-drug interaction data.
+   - URL: [DDInter Download](https://ddinter.scbdd.com/download/)
+
+
+---
+
+
 ## Usage
 
 After accessing the website, simply enter the medication you are taking or select it from the categories shown on the website. You will receive personalized recommendations, including what foods to eat, what to avoid, and potential medication interactions.
+
+
+---
+
 
 ## License
 
