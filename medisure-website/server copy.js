@@ -10,7 +10,7 @@ app.use(express.json());
 
 // OpenAI API Configuration
 const openai = new OpenAI({
-  apiKey: 'sk-j9GjBYiA_69dMUIzSaFZ-ho-CVeBrgV0Ch98F3MWefT3BlbkFJGiRPRPGxqwy6fviaLykf-6V4pvqMgvEz_FroKWhCYA' // Load your API key from environment variable
+  apiKey: ' ' // Load your API key from environment variable
 });
 
 // Load CSV data

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import logo from '/Users/aziz/code/raynasser/Medisure/medisure-website/src/logo.jpeg';  // Adjust the path if needed
+import logo from '../src/logo.jpeg';
 
 function App() {
   const [input, setInput] = useState('');
@@ -15,7 +15,7 @@ function App() {
       setMessages([...messages, { text: input, user: 'user' }]);
 
       try {
-        const response = await fetch('http://localhost:5000/api/process-chatbot', {
+        const response = await fetch('http://localhost:5001/api/process-chatbot', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

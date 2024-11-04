@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import logo from '/Users/aziz/code/raynasser/Medisure/medisure-website/src/logo.jpeg';  // Adjust the path if needed
+import logo from '../src/logo.jpeg';
 
 function App() {
   const [input, setInput] = useState('');

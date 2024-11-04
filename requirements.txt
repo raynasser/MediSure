@@ -41,6 +41,18 @@ psycopg2-binary
 fastapi==0.108.0
 pytz
 uvicorn
+
 # tests
 httpx
 pytest-asyncio
+
+# npm placeholder for non-Python dependency
+npm
+
+# To install Node.js
+              #  use: brew install node
+              #       curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+              #       brew install nvm
+              #       nvm install node
+              #       npm install
+              #       npm start

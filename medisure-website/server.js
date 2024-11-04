@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const { OpenAI } = require("openai");
@@ -9,13 +11,21 @@ app.use(cors());
 app.use(express.json());
 
 // OpenAI API Configuration
+// const openai = new OpenAI({
+//   apiKey: ''
+// });'
+
+
+const OpenAI = require('openai');
+
 const openai = new OpenAI({
-  apiKey: 'sk-j9GjBYiA_69dMUIzSaFZ-ho-CVeBrgV0Ch98F3MWefT3BlbkFJGiRPRPGxqwy6fviaLykf-6V4pvqMgvEz_FroKWhCYA' // Load your API key from environment variable
+  apiKey: process.env.API_KEY,
 });
+
 
 // Load CSV data
 let dataset = [];
-fs.createReadStream('final_fdi_ddi.csv')
+fs.createReadStream('../data/raw_data/fin/final_final_fdi_ddi.csv')
   .pipe(csv())
   .on('data', (row) => {
     dataset.push(row);
@@ -94,6 +104,7 @@ app.post('/api/process-chatbot', async (req, res) => {
 
 
 // Start the Node.js server
-app.listen(5000, () => {
-  console.log('Server is running on port 5000');
+app.listen(5001, () => {
+  console.log('Server is running on port 5001');
+  console.log("API Key:", process.env.API_KEY);
 });
